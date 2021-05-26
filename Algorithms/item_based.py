@@ -30,7 +30,7 @@ class ItemBased:
         :return: returns pre calculated movie to movie similarities  -->  [movie_id, movie_id] = similarity
         """
         n_movies = self.data.max_movies
-        movies_similarity_matrix = np.zeros((n_movies, n_movies))  # [movie_id, movie_id] = similarity
+        movies_similarity_matrix = np.zeros((n_movies + 1, n_movies + 1))  # [movie_id, movie_id] = similarity
         for movie_id1 in range(n_movies):
             for movie_id2 in range(0, movie_id1):
                 movies_similarity_matrix[movie_id1, movie_id2] = movies_similarity_matrix[
