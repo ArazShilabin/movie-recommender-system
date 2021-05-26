@@ -23,7 +23,7 @@ class DataManager:
                          engine='python',
                          sep="::",
                          names=["UserID", "Gender", "Age", "Occupation", "Zip-code"])
-        df = df[df["UserID"] < self.max_users]
+        df = df[df["UserID"] <= self.max_users]
         df = df.drop(columns='Zip-code')
         df = pd.get_dummies(df, columns=["Gender", "Age", "Occupation"])
         return df
@@ -33,7 +33,7 @@ class DataManager:
                          engine='python',
                          sep="::",
                          names=["MovieID", "Title", "Genres"])
-        df = df[df["MovieID"] < self.max_movies]
+        df = df[df["MovieID"] <= self.max_movies]
         df = df.drop(columns='Title')
         df = self.split_movies_genres_in_df(df)
         df = df.drop(columns="Genres")
@@ -60,7 +60,7 @@ class DataManager:
                          engine='python',
                          sep="::",
                          names=["UserID", "MovieID", "Rating", "Timestamp"])
-        df = df[(df["MovieID"] < self.max_movies) & (df["UserID"] < self.max_users)]
+        df = df[(df["MovieID"] <= self.max_movies) & (df["UserID"] <= self.max_users)]
         df = df.drop(columns='Timestamp')
         df = df.sample(frac=1, random_state=42).reset_index(drop=True)  # shuffle
         # split train_test
