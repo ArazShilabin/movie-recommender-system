@@ -13,9 +13,13 @@ you can get the dataset from this [website](https://grouplens.org/datasets/movie
 
 ## Algorithms :hugs:
 
-- **Item-Based**: here we use item-based collaborative filtering (CF) and KNN, to predict the score the user will give to a movie depending on how he has rated other movies with similar genres.
+- **User-Based**: In this method, the program tries finding users with similar movie tastes (users who have rated movies similarly to our user) using KNN. Consequently, predicts the new movie depending on how the other similar users have predicted the same movie.
 
- - **User-Based**: in this method, the program starts imputing the missing values using knn-imputer then tries finding users with similar movie tastes (users who have rated movies similarly to our user) using KNN. In the end, predicts the new movie depending on how the other similar users have predicted the same movie.
+- **Item-Based**: In this method, the program tries finding movies with similar user scores (movies which have been rated by users similar to our movie) using KNN. Consequently, predicts the new rating depending on how the other similar movies have been rated by other users.
+
+- **Content-Based**: here we use KNN to predict the score the user will give to a movie depending on how he has rated other movies with similar genres (a user might have a big liking to a specific genre which is considered the content of the movies).
+
+
 
 ### Contributers:
 
