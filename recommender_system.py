@@ -1,3 +1,4 @@
+from Algorithms.content_based import ContentBased
 from Algorithms.item_based import ItemBased
 from Algorithms.user_based import UserBased
 
@@ -14,15 +15,17 @@ class RecommenderSystem:
         self.model = self.get_model()
 
     def get_model(self):
-        if self.method_name == "item_based":
-            return ItemBased(data=self.data, n_neighbors=self.n_neighbors)
+        if self.method_name == "content_based":
+            return ContentBased(data=self.data, n_neighbors=self.n_neighbors)
         elif self.method_name == "user_based":
             return UserBased(data=self.data, n_neighbors=self.n_neighbors)
+        elif self.method_name == "item_based":
+            return ItemBased(data=self.data, n_neighbors=self.n_neighbors)
         else:
             raise Exception(f"method_name=\"{self.method_name}\" is not defined")
 
     def predict(self, df_ratings_test):
-        if self.method_name == "item_based" or self.method_name == "user_based":
+        if self.method_name in ["content_based", "user_based", "item_based"]:
             return self.model.predict(df_ratings_test)
         else:
             raise Exception(f"method_name=\"{self.method_name}\" is not defined")
