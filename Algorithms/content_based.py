@@ -3,7 +3,7 @@ from Utils.similarity_metrics import SimilarityMetrics
 import numpy as np
 
 
-class ItemBased:
+class ContentBased:
 
     def __init__(self, data, n_neighbors):
         self.data = data
